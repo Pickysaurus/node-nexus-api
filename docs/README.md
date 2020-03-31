@@ -37,7 +37,7 @@ Therefore it's in your, and your users best interest to provide a version in the
 
 ## Single Sign-On
 
-As described above, an APIKEY can be generated using a websocket-based protocol. This is *not* part of this library.
+As described above, an APIKEY can be generated using a websocket-based protocol. This is *not* part of this library. You can read more about the SSO [here](https://github.com/Nexus-Mods/sso-integration-demo).
 
 ### Process
 
@@ -46,7 +46,7 @@ As described above, an APIKEY can be generated using a websocket-based protocol.
 - When the connection is established, send a JSON encoded message containing the id you just generated and the appid you got on registration.
 Example: { "id": "4c694264-1fdb-48c6-a5a0-8edd9e53c7a6", "appid": "your_fancy_app" }
 - From now on, until the connection is closed, send a websocket ping once every 30 seconds.
-- Have the user open _https://www.nexusmods.com/sso?id=xyz_ (_id_ being the random id you generated in step 1) _in the default browser_
+- Have the user open _https://www.nexusmods.com/sso?id=xyz&application=xyz_ (_id_ being the random id you generated in step 1, _application_ being the application slug obtained from the Nexus Mods Community Team) _in the default browser_
 - On the website users will be asked to log-in to Nexus Mods if they aren't already. Then they will be asked to authorize your application to use their account.
 - Once the user confirms, a message will be sent to your websocket with the APIKEY (not encoded, just the plain key). This is the only non-error message you will ever receive from the server.
 - Save away the key and close the connection.
